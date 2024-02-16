@@ -13,7 +13,9 @@ import { z } from 'zod';
 // gather query params
 const route = useRoute()
 const query = route.query;
-const value = z.number().parse(query.value) ;
+
+// use safe parsing and handle errors as needed
+const value = z.coerce.number().parse(query.value);
 const name = z.string().parse(query.name) as ComponentName;
 
 // setup state and component dictionary
