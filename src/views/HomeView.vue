@@ -20,11 +20,15 @@ const name = z.string().parse(query.name) as ComponentName;
 
 // setup state and component dictionary
 const voteValue = ref<number>(value);
+
+
 const componentDictionary = {
   'comp1': LComp1,
   'comp2': LComp2,
   'comp3': LComp3
 };
+// type for dictionary keys
+type ComponentName = keyof typeof componentDictionary;
 
 
 // submit vote to server via API
@@ -32,8 +36,6 @@ async function fetchVoteValue(value: number) {
   // submit vote to server via API
 }
 
-// type for dictionary keys
-type ComponentName = keyof typeof componentDictionary;
 
 
 // render current component based on query param
